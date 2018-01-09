@@ -16,19 +16,19 @@
  *
  * @usage   wprs_types( 'prod', '产品', [ 'title', 'editor', 'thumbnail' ], true );
  */
-function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, $icon = 'dashicons-networking'){
+function wprs_types( $slug, $name, $support, $is_publish, $hierarchical = false, $icon = 'dashicons-networking' ) {
 
 	//文章类型的标签
 	$labels = [
 		'name'               => $name,
 		'singular_name'      => $name,
-		'add_new'            => __( 'Add New ', 'wizhi' ) . $name,
-		'add_new_item'       => __( 'Add New ', 'wizhi' ) . $name,
-		'edit_item'          => __( 'Edit ', 'wizhi' ) . $name,
-		'new_item'           => __( 'New ', 'wizhi' ) . $name,
-		'all_items'          => __( 'All ', 'wizhi' ) . $name,
-		'view_item'          => __( 'View ', 'wizhi' ) . $name,
-		'search_items'       => __( 'Search ', 'wizhi' ) . $name,
+		'add_new'            => sprintf( __( 'Add New ', 'wizhi' ), $name ),
+		'add_new_item'       => sprintf( __( 'Add New ', 'wizhi' ), $name ),
+		'edit_item'          => sprintf( __( 'Edit ', 'wizhi' ), $name ),
+		'new_item'           => sprintf( __( 'New ', 'wizhi' ), $name ),
+		'all_items'          => sprintf( __( 'All ', 'wizhi' ), $name ),
+		'view_item'          => sprintf( __( 'View ', 'wizhi' ), $name ),
+		'search_items'       => sprintf( __( 'Search ', 'wizhi' ), $name ),
 		'not_found'          => sprintf( __( 'Could not find %s', 'wizhi' ), $name ),
 		'not_found_in_trash' => sprintf( __( 'Could not find %s in trash', 'wizhi' ), $name ),
 		'menu_name'          => $name,
@@ -60,7 +60,7 @@ function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, 
 	];
 
 
-	$args   = apply_filters( 'wprs_type_args_' . $slug, $args );
+	$args = apply_filters( 'wprs_type_args_' . $slug, $args );
 
 	if ( strlen( $slug ) > 0 ) {
 		register_post_type( $slug, $args );
