@@ -5,12 +5,12 @@
  *
  * @since   wizhi 1.0
  *
- * @param string  $slug       文章类型名称
- * @param string  $name       文章类型菜单名称
- * @param array   $support    文章类型支持的功能
- * @param boolean $is_publish 文章类型是否在前后台可见
- * @param boolean $is_publish 文章是否分级显示
- * @param string  $icon       后台使用的 dashicon 图标
+ * @param string  $slug         文章类型名称
+ * @param string  $name         文章类型菜单名称
+ * @param array   $support      文章类型支持的功能
+ * @param boolean $is_publish   文章类型是否在前后台可见
+ * @param boolean $hierarchical 文章是否分级显示
+ * @param string  $icon         后台使用的 dashicon 图标
  *
  * @package backend
  *
@@ -49,7 +49,6 @@ function wprs_types( $slug, $name, $support, $is_publish, $hierarchical = false,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 5,
 		'menu_icon'           => $icon,
-		// 'capability_type'     => [ $slug, Inflector::pluralize( $slug ) ],
 		'map_meta_cap'        => true,
 		'hierarchical'        => $hierarchical,
 		'supports'            => $support,
