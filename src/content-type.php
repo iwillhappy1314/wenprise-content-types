@@ -9,13 +9,14 @@
  * @param string  $name       文章类型菜单名称
  * @param array   $support    文章类型支持的功能
  * @param boolean $is_publish 文章类型是否在前后台可见
+ * @param boolean $is_publish 文章是否分级显示
  * @param string  $icon       后台使用的 dashicon 图标
  *
  * @package backend
  *
- * @usage   Wizhi\Helper\PostType::create( 'prod', '产品', [ 'title', 'editor', 'thumbnail' ], true );
+ * @usage   wprs_types( 'prod', '产品', [ 'title', 'editor', 'thumbnail' ], true );
  */
-function wprs_types($slug, $name, $support, $is_publish, $icon = 'dashicons-networking'){
+function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, $icon = 'dashicons-networking'){
 
 	//文章类型的标签
 	$labels = [
@@ -33,7 +34,7 @@ function wprs_types($slug, $name, $support, $is_publish, $icon = 'dashicons-netw
 		'menu_name'          => $name,
 	];
 
-	$labels = apply_filters( 'wizhi_type_labels' . $slug, $labels );
+	$labels = apply_filters( 'wprs_type_labels_' . $slug, $labels );
 
 	//注册文章类型需要的参数
 	$args = [
@@ -50,7 +51,7 @@ function wprs_types($slug, $name, $support, $is_publish, $icon = 'dashicons-netw
 		'menu_icon'           => $icon,
 		// 'capability_type'     => [ $slug, Inflector::pluralize( $slug ) ],
 		'map_meta_cap'        => true,
-		'hierarchical'        => false,
+		'hierarchical'        => $hierarchical,
 		'supports'            => $support,
 		'has_archive'         => $is_publish,
 		'rewrite'             => [ 'slug' => $slug ],
@@ -59,7 +60,7 @@ function wprs_types($slug, $name, $support, $is_publish, $icon = 'dashicons-netw
 	];
 
 
-	$args   = apply_filters( 'wizhi_type_args' . $slug, $args );
+	$args   = apply_filters( 'wprs_type_args_' . $slug, $args );
 
 	if ( strlen( $slug ) > 0 ) {
 		register_post_type( $slug, $args );
