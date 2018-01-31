@@ -9,7 +9,8 @@
     },
     "files": [
       "src/content-type.php",
-      "src/taxonomy.php"
+      "src/taxonomy.php",
+      "src/helper.php"
     ]
   },
   "license": "MIT",
