@@ -5,7 +5,7 @@ Create WordPress content types and taxonomies more easier.
 ## Register Post type
 
 ```php
-wprs_types( "work", "Works", [ 'title', 'editor', 'comments', 'thumbnail', 'author' ], true, false, 'dashicons-art' );
+wprs_types( "work", "Works", [ 'title', 'editor', 'thumbnail'], true, false, 'dashicons-art' );
 ```
  * @param string  $slug         Post type slug
  * @param string  $name         Post type name in the menu and page title
