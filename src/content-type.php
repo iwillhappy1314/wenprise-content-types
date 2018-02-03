@@ -2,19 +2,15 @@
 
 /**
  * 快速添加文章类型
- *
- * @since   wizhi 1.0
- *
+ **
  * @param string  $slug         文章类型名称
  * @param string  $name         文章类型菜单名称
  * @param array   $support      文章类型支持的功能
  * @param boolean $is_publish   文章类型是否在前后台可见
  * @param boolean $hierarchical 文章是否分级显示
  * @param string  $icon         后台使用的 dashicon 图标
- *
- * @package backend
- *
- * @usage   wprs_types( 'prod', '产品', [ 'title', 'editor', 'thumbnail' ], true );
+ **
+ * @usage   wprs_types( "work", "Works", [ 'title', 'editor', 'comments', 'thumbnail', 'author' ], true, false, 'dashicons-art' );
  */
 function wprs_types( $slug, $name, $support, $is_publish, $hierarchical = false, $icon = 'dashicons-networking' ) {
 
