@@ -22,7 +22,7 @@ wprs_types( "work", "Works", [ 'title', 'editor', 'comments', 'thumbnail', 'auth
 ## Register Taxonomy
 
 ```php
-	wprs_tax( "work_type", 'work', "Work Type", true );
+wprs_tax( "work_type", 'work', "Work Type", true );
 ```
 
  * @param string       $tax_slug     Taxonomy slug
@@ -35,5 +35,3 @@ wprs_types( "work", "Works", [ 'title', 'editor', 'comments', 'thumbnail', 'auth
  - wprs_type_labels_$slug: modify the post type labels
  - wprs_type_args_$slug: modify the args to register the post type
  - wprs_tax_types_$slug: Modify the post types taxonomy registered to
-
-
