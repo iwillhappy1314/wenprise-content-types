@@ -1,13 +1,13 @@
-#Wenprise Content Types
+# Wenprise Content Types
 
 Create WordPress content types and taxonomies more easier.
 
-##Register Post type
+## Register Post type
 
 ```php
 wprs_types( "work", "Works", [ 'title', 'editor', 'thumbnail'], true, false, 'dashicons-art' );
 ```
-###Params
+### Params
 
 ```@param string  $slug         Post type slug
  @param string  $name         Post type name in the menu and page title
@@ -16,17 +16,17 @@ wprs_types( "work", "Works", [ 'title', 'editor', 'thumbnail'], true, false, 'da
  @param boolean $hierarchical is hierarchical
  @param string  $icon         the dashicon of the dashboard menu
 ```
-###Filters
+### Filters
  
  - wprs_type_labels_$slug: modify the post type labels
  - wprs_type_args_$slug: modify the args to register the post type
 
-##Register Taxonomy
+## Register Taxonomy
 
 ```php
 wprs_tax( "work_type", 'work', "Work Type", true );
 ```
-###Params
+### Params
 
 ```
 @param string       $tax_slug     Taxonomy slug
@@ -35,7 +35,7 @@ wprs_tax( "work_type", 'work', "Work Type", true );
 @param boolean      $hierarchical is hierarchical
 ```
 
-###Filters
+### Filters
   
  - wprs_type_labels_$slug: modify the post type labels
  - wprs_type_args_$slug: modify the args to register the post type
