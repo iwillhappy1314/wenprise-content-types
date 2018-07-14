@@ -83,7 +83,7 @@ function wprs_types( $slug, $name, $support, $is_publish, $hierarchical = false,
 
 
 /**
- * 添加权限到角色
+ * 添加文章类型权限到角色
  *
  * @param        $post_type
  * @param string $role_name
@@ -122,7 +122,7 @@ function wprs_add_caps( $post_type, $role_name = 'administrator' )
 
 
 /**
- * 添加权限到角色
+ * 从角色移除文章类型权限
  *
  * @param        $post_type
  * @param string $role_name
