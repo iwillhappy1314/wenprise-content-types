@@ -1,5 +1,7 @@
 <?php
 
+use  \Doctrine\Common\Inflector\Inflector;
+
 /**
  * 快速添加文章类型
  **
@@ -35,7 +37,9 @@ function wprs_types( $slug, $name, $support, $is_publish, $hierarchical = false,
 
 	$labels = apply_filters( 'wprs_type_labels_' . $slug, $labels );
 
-	//注册文章类型需要的参数
+	$singular = $slug;
+	$plural   = Inflector::pluralize( $slug );
+
 	//注册文章类型需要的参数
 	$args = [
 		'labels'              => $labels,
@@ -56,20 +60,20 @@ function wprs_types( $slug, $name, $support, $is_publish, $hierarchical = false,
 		'query_var'           => $is_publish,
 		'map_meta_cap'        => true,
 		'capabilities'        => [
-			'read_post'              => 'read_' . $slug,
-			'read_private_posts'     => 'read_private_' . $slug,
-			'edit_post'              => 'edit_' . $slug,
-			'edit_posts'             => 'edit_' . $slug . 's',
-			'edit_others_posts'      => 'edit_others_' . $slug,
-			'edit_published_posts'   => 'edit_published_' . $slug,
-			'edit_private_posts'     => 'edit_private_' . $slug,
-			'delete_post'            => 'delete_' . $slug,
-			'delete_posts'           => 'delete_' . $slug . 's',
-			'delete_others_posts'    => 'delete_others_' . $slug,
-			'delete_published_posts' => 'delete_published_' . $slug,
-			'delete_private_posts'   => 'delete_private_' . $slug,
-			'publish_posts'          => 'publish_' . $slug,
-			'moderate_comments'      => 'moderate_comments_' . $slug,
+			'read_post'              => 'read_' . $singular,
+			'read_private_posts'     => 'read_private_' . $plural,
+			'edit_post'              => 'edit_' . $singular,
+			'edit_posts'             => 'edit_' . $plural,
+			'edit_others_posts'      => 'edit_others_' . $plural,
+			'edit_published_posts'   => 'edit_published_' . $plural,
+			'edit_private_posts'     => 'edit_private_' . $plural,
+			'delete_post'            => 'delete_' . $singular,
+			'delete_posts'           => 'delete_' . $plural,
+			'delete_others_posts'    => 'delete_others_' . $plural,
+			'delete_published_posts' => 'delete_published_' . $plural,
+			'delete_private_posts'   => 'delete_private_' . $plural,
+			'publish_posts'          => 'publish_' . $plural,
+			'moderate_comments'      => 'moderate_comments_' . $plural,
 		],
 	];
 
@@ -94,14 +98,8 @@ function wprs_add_caps( $post_type, $role_name = 'administrator' )
 {
 	$role = get_role( $role_name );
 
-	if ( is_array( $post_type ) ) {
-		$singular = $post_type[ 0 ];
-		$plural   = $post_type[ 1 ];
-	} else {
-		$singular = $post_type;
-		$plural   = $post_type . 's';
-	}
-
+	$singular = $post_type;
+	$plural   = Inflector::pluralize( $post_type );
 
 	$caps = [
 		'read_' . $singular,
@@ -140,13 +138,8 @@ function wprs_remove_caps( $post_type, $role_name = 'administrator' )
 {
 	$role = get_role( $role_name );
 
-	if ( is_array( $post_type ) ) {
-		$singular = $post_type[ 0 ];
-		$plural   = $post_type[ 1 ];
-	} else {
-		$singular = $post_type;
-		$plural   = $post_type . 's';
-	}
+	$singular = $post_type;
+	$plural   = Inflector::pluralize( $post_type );
 
 	$caps = [
 		'read_' . $singular,
