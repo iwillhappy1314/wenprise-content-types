@@ -102,20 +102,27 @@ function wprs_add_caps( $post_type, $role_name = 'administrator' )
 		$plural   = $post_type . 's';
 	}
 
-	$role->add_cap( 'read_' . $singular );
-	$role->add_cap( 'read_private_' . $singular );
-	$role->add_cap( 'edit_' . $singular );
-	$role->add_cap( 'edit_' . $plural );
-	$role->add_cap( 'edit_others_' . $singular );
-	$role->add_cap( 'edit_published_' . $singular );
-	$role->add_cap( 'edit_private_' . $singular );
-	$role->add_cap( 'delete_' . $singular );
-	$role->add_cap( 'delete_' . $plural );
-	$role->add_cap( 'delete_others_' . $singular );
-	$role->add_cap( 'delete_published_' . $singular );
-	$role->add_cap( 'delete_private_' . $singular );
-	$role->add_cap( 'publish_' . $singular );
-	$role->add_cap( 'moderate_comments_' . $singular );
+
+	$caps = [
+		'read_' . $singular,
+		'read_private_' . $singular,
+		'edit_' . $singular,
+		'edit_' . $plural,
+		'edit_others_' . $singular,
+		'edit_published_' . $singular,
+		'edit_private_' . $singular,
+		'delete_' . $singular,
+		'delete_' . $plural,
+		'delete_others_' . $singular,
+		'delete_published_' . $singular,
+		'delete_private_' . $singular,
+		'publish_' . $singular,
+		'moderate_comments_' . $singular,
+	];
+
+	foreach ( $caps as $cap ) {
+		$role->add_cap( $cap );
+	}
 
 	return $role;
 }
@@ -141,20 +148,26 @@ function wprs_remove_caps( $post_type, $role_name = 'administrator' )
 		$plural   = $post_type . 's';
 	}
 
-	$role->remove_cap( 'read_' . $singular );
-	$role->remove_cap( 'read_private_' . $singular );
-	$role->remove_cap( 'edit_' . $singular );
-	$role->remove_cap( 'edit_' . $plural );
-	$role->remove_cap( 'edit_others_' . $singular );
-	$role->remove_cap( 'edit_published_' . $singular );
-	$role->remove_cap( 'edit_private_' . $singular );
-	$role->remove_cap( 'delete_' . $singular );
-	$role->remove_cap( 'delete_' . $plural );
-	$role->remove_cap( 'delete_others_' . $singular );
-	$role->remove_cap( 'delete_published_' . $singular );
-	$role->remove_cap( 'delete_private_' . $singular );
-	$role->remove_cap( 'publish_' . $singular );
-	$role->remove_cap( 'moderate_comments_' . $singular );
+	$caps = [
+		'read_' . $singular,
+		'read_private_' . $singular,
+		'edit_' . $singular,
+		'edit_' . $plural,
+		'edit_others_' . $singular,
+		'edit_published_' . $singular,
+		'edit_private_' . $singular,
+		'delete_' . $singular,
+		'delete_' . $plural,
+		'delete_others_' . $singular,
+		'delete_published_' . $singular,
+		'delete_private_' . $singular,
+		'publish_' . $singular,
+		'moderate_comments_' . $singular,
+	];
+
+	foreach ( $caps as $cap ) {
+		$role->remove_cap( $cap );
+	}
 
 	return $role;
 }
