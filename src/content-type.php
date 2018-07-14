@@ -119,3 +119,42 @@ function wprs_add_caps( $post_type, $role_name = 'administrator' )
 
 	return $role;
 }
+
+
+/**
+ * 添加权限到角色
+ *
+ * @param        $post_type
+ * @param string $role_name
+ *
+ * @return mixed
+ */
+function wprs_remove_caps( $post_type, $role_name = 'administrator' )
+{
+	$role = get_role( $role_name );
+
+	if ( is_array( $post_type ) ) {
+		$singular = $post_type[ 0 ];
+		$plural   = $post_type[ 1 ];
+	} else {
+		$singular = $post_type;
+		$plural   = $post_type . 's';
+	}
+
+	$role->remove_cap( 'read_' . $singular );
+	$role->remove_cap( 'read_private_' . $singular );
+	$role->remove_cap( 'edit_' . $singular );
+	$role->remove_cap( 'edit_' . $plural );
+	$role->remove_cap( 'edit_others_' . $singular );
+	$role->remove_cap( 'edit_published_' . $singular );
+	$role->remove_cap( 'edit_private_' . $singular );
+	$role->remove_cap( 'delete_' . $singular );
+	$role->remove_cap( 'delete_' . $plural );
+	$role->remove_cap( 'delete_others_' . $singular );
+	$role->remove_cap( 'delete_published_' . $singular );
+	$role->remove_cap( 'delete_private_' . $singular );
+	$role->remove_cap( 'publish_' . $singular );
+	$role->remove_cap( 'moderate_comments_' . $singular );
+
+	return $role;
+}
