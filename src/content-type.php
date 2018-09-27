@@ -87,6 +87,7 @@ function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, 
     // 添加权限
     $capabilities = apply_filters('wprs_type_caps_' . $slug, ['administrator', 'editor']);
 
+    // todo: 添加权限时，会保存在数据库中，需要使用缓存优化权限
     foreach ($capabilities as $cap) {
         wprs_add_caps($slug, $cap);
     }
