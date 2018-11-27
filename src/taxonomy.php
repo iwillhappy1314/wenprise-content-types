@@ -7,13 +7,14 @@
  *
  * @param string       $tax_slug     分类法名称
  * @param string|array $post_type    关联到的文章类型的名称
+ * @param boolean      $is_public    是否公开
  * @param string       $tax_name     分类法菜单名称
  * @param boolean      $hierarchical 是否允许有父级分类
  *
  *
- * @usage   wprs_tax( "work_type", 'work', "Work Type", true );
+ * @usage   wprs_tax( "work_type", 'work', __("Work Type", 'wprs'), true );
  */
-function wprs_tax($tax_slug, $post_type, $tax_name, $hierarchical = true)
+function wprs_tax($tax_slug, $post_type, $tax_name, $is_public, $hierarchical = true)
 {
 
 
@@ -43,7 +44,11 @@ function wprs_tax($tax_slug, $post_type, $tax_name, $hierarchical = true)
     //分类法参数
     $args = [
         'labels'            => $labels,
+        'public'            => $is_public,
         'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menus' => $is_public,
+        'show_in_rest'      => $is_public,
         'show_admin_column' => true,
         'hierarchical'      => $hierarchical,
         'rewrite'           => ['slug' => $tax_slug],
