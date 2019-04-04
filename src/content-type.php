@@ -36,9 +36,6 @@ function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, 
 
     $labels = apply_filters('wprs_type_labels_' . $slug, $labels);
 
-    $singular = $slug;
-    $plural   = Inflector::pluralize($slug);
-
     //注册文章类型需要的参数
     $args = [
         'labels'              => $labels,
@@ -57,23 +54,6 @@ function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, 
         'has_archive'         => $is_publish,
         'rewrite'             => ['slug' => $slug],
         'query_var'           => $is_publish,
-        'map_meta_cap'        => true,
-        'capabilities'        => [
-            'read_post'              => 'read_' . $singular,
-            'read_private_posts'     => 'read_private_' . $plural,
-            'edit_post'              => 'edit_' . $singular,
-            'edit_posts'             => 'edit_' . $plural,
-            'edit_others_posts'      => 'edit_others_' . $plural,
-            'edit_published_posts'   => 'edit_published_' . $plural,
-            'edit_private_posts'     => 'edit_private_' . $plural,
-            'delete_post'            => 'delete_' . $singular,
-            'delete_posts'           => 'delete_' . $plural,
-            'delete_others_posts'    => 'delete_others_' . $plural,
-            'delete_published_posts' => 'delete_published_' . $plural,
-            'delete_private_posts'   => 'delete_private_' . $plural,
-            'publish_posts'          => 'publish_' . $plural,
-            'moderate_comments'      => 'moderate_comments_' . $plural,
-        ],
     ];
 
 
@@ -83,13 +63,6 @@ function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, 
         register_post_type($slug, $args);
     }
 
-    // 添加权限
-    $capabilities = apply_filters('wprs_type_caps_' . $slug, ['administrator', 'editor']);
-
-    // todo: 添加权限时，会保存在数据库中，需要使用缓存优化权限
-    foreach ($capabilities as $cap) {
-        wprs_add_caps($slug, $cap);
-    }
 }
 
 
