@@ -41,12 +41,13 @@ function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, 
         'labels'              => $labels,
         'description'         => '',
         'public'              => $is_publish,
-        'exclude_from_search' => ! $is_publish,
+        'exclude_from_search' => !$is_publish,
         'publicly_queryable'  => $is_publish,
         'show_ui'             => true,
-        'show_in_nav_menus'   => true,
+        'show_in_nav_menus'   => $is_publish,
         'show_in_menu'        => true,
         'show_in_admin_bar'   => true,
+        'show_in_rest'        => $is_publish,
         'menu_position'       => 5,
         'menu_icon'           => $icon,
         'hierarchical'        => $hierarchical,
@@ -62,7 +63,6 @@ function wprs_types($slug, $name, $support, $is_publish, $hierarchical = false, 
     if (strlen($slug) > 0) {
         register_post_type($slug, $args);
     }
-
 }
 
 
