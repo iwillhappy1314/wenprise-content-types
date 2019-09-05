@@ -1,5 +1,9 @@
 <?php
 
+if(!function_exists('apply_filters')){
+    return;
+}
+
 /**
  * 加载多语言文件
  */

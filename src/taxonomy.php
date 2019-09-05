@@ -1,5 +1,8 @@
 <?php
 
+if(!function_exists('apply_filters')){
+    return;
+}
 
 /**
  * 快速添加分类方法

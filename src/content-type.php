@@ -1,5 +1,9 @@
 <?php
 
+if(!function_exists('apply_filters')){
+    return;
+}
+
 use  \Doctrine\Common\Inflector\Inflector;
 
 /**
