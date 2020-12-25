@@ -1,11 +1,11 @@
 # Wenprise Content Types
 
-Create WordPress content types and taxonomies more easier.
+Create WordPress content types and taxonomies easier.
 
 ## Register Post type
 
 ```php
-wprs_types( "work", "Works", [ 'title', 'editor', 'thumbnail'], true, false, 'dashicons-art' );
+ \WenpriseContentTypes\ContentType::register( "work", "Works", [ 'title', 'editor', 'thumbnail'], true, false, 'dashicons-art' );
 ```
 ### Params
 
@@ -24,7 +24,7 @@ wprs_types( "work", "Works", [ 'title', 'editor', 'thumbnail'], true, false, 'da
 ## Register Taxonomy
 
 ```php
-wprs_tax( "work_type", 'work', "Work Type", true );
+\WenpriseContentTypes\Taxonomy::register( "work_type", 'work', "Work Type", true );
 ```
 ### Params
 
