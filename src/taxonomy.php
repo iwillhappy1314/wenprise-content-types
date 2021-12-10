@@ -19,7 +19,7 @@ class Taxonomy
      *
      * @usage   wprs_tax( "work_type", 'work', __("Work Type", 'wprs'), true );
      */
-    public static function register($tax_slug, $post_type, $tax_name, $is_public, $hierarchical = true)
+    public static function register(string $tax_slug, $post_type, string $tax_name, bool $is_public, bool $hierarchical = true)
     {
 
         Helpers::loadTextDomain();

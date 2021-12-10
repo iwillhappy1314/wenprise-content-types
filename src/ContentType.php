@@ -19,7 +19,7 @@ class ContentType
      *
      * @usage   wprs_types( "work", __("Works", 'wprs'), [ 'title', 'editor', 'comments', 'thumbnail', 'author' ], true, false, 'dashicons-art' );
      */
-    public static function register($slug, $name, $support, $is_publish, $hierarchical = false, $icon = 'dashicons-networking')
+    public static function register(string $slug, string $name, array $support, bool $is_publish, bool $hierarchical = false, string $icon = 'dashicons-networking')
     {
         Helpers::loadTextDomain();
 
@@ -74,12 +74,12 @@ class ContentType
     /**
      * 添加文章类型权限到角色
      *
-     * @param        $post_type
+     * @param string $post_type
      * @param string $role_name
      *
-     * @return mixed
+     * @return \WP_Role|null
      */
-    public static function add_caps($post_type, $role_name = 'administrator')
+    public static function add_caps(string $post_type, string $role_name = 'administrator'): ?\WP_Role
     {
         $role = get_role($role_name);
 
@@ -111,12 +111,12 @@ class ContentType
     /**
      * 从角色移除文章类型权限
      *
-     * @param        $post_type
+     * @param string  $post_type
      * @param string $role_name
      *
-     * @return mixed
+     * @return \WP_Role|null
      */
-    public static function remove_caps($post_type, $role_name = 'administrator')
+    public static function remove_caps(string $post_type, string $role_name = 'administrator'): ?\WP_Role
     {
         $role = get_role($role_name);
 
