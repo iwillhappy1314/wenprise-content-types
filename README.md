@@ -11,7 +11,7 @@ Create WordPress content types and taxonomies easier.
 
 ```@param string  $slug         Post type slug
  @param string  $name         Post type name in the menu and page title
- @param array   $support      The functions post type support
+ @param array|boolean   $support      The functions post type support
  @param boolean $is_publish   Is publish in frontend
  @param boolean $hierarchical is hierarchical
  @param string  $icon         the dashicon of the dashboard menu
