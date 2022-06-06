@@ -12,14 +12,14 @@ class ContentType
      *
      * @param string  $slug         文章类型名称
      * @param string  $name         文章类型菜单名称
-     * @param array   $support      文章类型支持的功能
+     * @param array|boolean   $support      文章类型支持的功能
      * @param boolean $is_publish   文章类型是否在前后台可见
      * @param boolean $hierarchical 文章是否分级显示
      * @param string  $icon         后台使用的 dashicon 图标
      *
      * @usage   wprs_types( "work", __("Works", 'wprs'), [ 'title', 'editor', 'comments', 'thumbnail', 'author' ], true, false, 'dashicons-art' );
      */
-    public static function register(string $slug, string $name, array $support, bool $is_publish, bool $hierarchical = false, string $icon = 'dashicons-networking')
+    public static function register(string $slug, string $name, bool|array $support, bool $is_publish, bool $hierarchical = false, string $icon = 'dashicons-networking')
     {
         Helpers::loadTextDomain();
 
