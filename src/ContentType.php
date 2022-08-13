@@ -1,7 +1,6 @@
 <?php
-namespace WenpriseContentTypes;
 
-use Doctrine\Common\Inflector\Inflector;
+namespace WenpriseContentTypes;
 
 class ContentType
 {
@@ -10,12 +9,12 @@ class ContentType
      * 快速添加文章类型
      **
      *
-     * @param string  $slug         文章类型名称
-     * @param string  $name         文章类型菜单名称
-     * @param array|boolean   $support      文章类型支持的功能
-     * @param boolean $is_publish   文章类型是否在前后台可见
-     * @param boolean $hierarchical 文章是否分级显示
-     * @param string  $icon         后台使用的 dashicon 图标
+     * @param string        $slug         文章类型名称
+     * @param string        $name         文章类型菜单名称
+     * @param array|boolean $support      文章类型支持的功能
+     * @param boolean       $is_publish   文章类型是否在前后台可见
+     * @param boolean       $hierarchical 文章是否分级显示
+     * @param string        $icon         后台使用的 dashicon 图标
      *
      * @usage   wprs_types( "work", __("Works", 'wprs'), [ 'title', 'editor', 'comments', 'thumbnail', 'author' ], true, false, 'dashicons-art' );
      */
@@ -23,20 +22,22 @@ class ContentType
     {
         Helpers::loadTextDomain();
 
+        $plural = Vendor\Doctrine\Common\Inflector\Inflector::pluralize($name);
+
         //文章类型的标签
         $labels = [
-            'name'               => $name,
-            'singular_name'      => $name,
+            'name'               => ucwords($plural),
+            'singular_name'      => ucwords($name),
             'add_new'            => sprintf(__('Add New %s', 'wprs'), $name),
             'add_new_item'       => sprintf(__('Add New %s', 'wprs'), $name),
             'edit_item'          => sprintf(__('Edit %s', 'wprs'), $name),
             'new_item'           => sprintf(__('New %s', 'wprs'), $name),
-            'all_items'          => sprintf(__('All %s', 'wprs'), $name),
-            'view_item'          => sprintf(__('View %s', 'wprs'), $name),
+            'all_items'          => sprintf(__('All %s', 'wprs'), $plural),
+            'view_item'          => sprintf(__('View %s', 'wprs'), $plural),
             'search_items'       => sprintf(__('Search %s', 'wprs'), $name),
             'not_found'          => sprintf(__('Could not find %s', 'wprs'), $name),
             'not_found_in_trash' => sprintf(__('Could not find %s in trash', 'wprs'), $name),
-            'menu_name'          => $name,
+            'menu_name'          => ucfirst($plural),
         ];
 
         $labels = apply_filters('wprs_type_labels_' . $slug, $labels);
@@ -83,7 +84,7 @@ class ContentType
     {
         $role = get_role($role_name);
 
-        $plural = Inflector::pluralize($post_type);
+        $plural = Vendor\Doctrine\Common\Inflector\Inflector::pluralize($post_type);
 
         $caps = [
             'read_' . $plural,
@@ -111,7 +112,7 @@ class ContentType
     /**
      * 从角色移除文章类型权限
      *
-     * @param string  $post_type
+     * @param string $post_type
      * @param string $role_name
      *
      * @return \WP_Role|null
