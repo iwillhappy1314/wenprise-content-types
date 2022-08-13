@@ -22,22 +22,22 @@ class ContentType
     {
         Helpers::loadTextDomain();
 
-        $plural = Vendor\Doctrine\Common\Inflector\Inflector::pluralize($name);
+        $singular_name = Vendor\Doctrine\Common\Inflector\Inflector::singularize($name);
 
         //文章类型的标签
         $labels = [
-            'name'               => ucwords($plural),
-            'singular_name'      => ucwords($name),
-            'add_new'            => sprintf(__('Add New %s', 'wprs'), $name),
-            'add_new_item'       => sprintf(__('Add New %s', 'wprs'), $name),
-            'edit_item'          => sprintf(__('Edit %s', 'wprs'), $name),
-            'new_item'           => sprintf(__('New %s', 'wprs'), $name),
-            'all_items'          => sprintf(__('All %s', 'wprs'), $plural),
-            'view_item'          => sprintf(__('View %s', 'wprs'), $plural),
+            'name'               => ucwords($name),
+            'singular_name'      => ucwords(singular_name),
+            'add_new'            => sprintf(__('Add New %s', 'wprs'), $singular_name),
+            'add_new_item'       => sprintf(__('Add New %s', 'wprs'), $singular_name),
+            'edit_item'          => sprintf(__('Edit %s', 'wprs'), $singular_name),
+            'new_item'           => sprintf(__('New %s', 'wprs'), $singular_name),
+            'all_items'          => sprintf(__('All %s', 'wprs'), $name),
+            'view_item'          => sprintf(__('View %s', 'wprs'), $singular_name),
             'search_items'       => sprintf(__('Search %s', 'wprs'), $name),
-            'not_found'          => sprintf(__('Could not find %s', 'wprs'), $name),
-            'not_found_in_trash' => sprintf(__('Could not find %s in trash', 'wprs'), $name),
-            'menu_name'          => ucfirst($plural),
+            'not_found'          => sprintf(__('Could not find %s', 'wprs'), $singular_name),
+            'not_found_in_trash' => sprintf(__('Could not find %s in trash', 'wprs'), $singular_name),
+            'menu_name'          => ucfirst($name),
         ];
 
         $labels = apply_filters('wprs_type_labels_' . $slug, $labels);
@@ -84,7 +84,7 @@ class ContentType
     {
         $role = get_role($role_name);
 
-        $plural = Vendor\Doctrine\Common\Inflector\Inflector::pluralize($post_type);
+        $plural = Vendor\Doctrine\Common\Inflector\Inflector::singularize($post_type);
 
         $caps = [
             'read_' . $plural,
@@ -121,7 +121,7 @@ class ContentType
     {
         $role = get_role($role_name);
 
-        $plural = Inflector::pluralize($post_type);
+        $singular_name = Inflector::pluralize($post_type);
 
         $caps = [
             'read_' . $plural,

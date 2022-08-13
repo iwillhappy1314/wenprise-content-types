@@ -23,27 +23,27 @@ class Taxonomy
 
         Helpers::loadTextDomain();
 
-        $plural = Vendor\Doctrine\Common\Inflector\Inflector::pluralize($tax_name);
+        $singular_name = Vendor\Doctrine\Common\Inflector\Inflector::singularize($tax_name);
 
         //分类法的标签
         $labels = [
-            'name'                       => ucwords($plural),
-            'singular_name'              => ucwords($tax_name),
-            'menu_name'                  => ucwords($plural),
-            'all_items'                  => sprintf(__('All %s', 'wprs'), $plural),
-            'edit_item'                  => sprintf(__('Edit %s', 'wprs'), $tax_name),
-            'view_item'                  => sprintf(__('View %s', 'wprs'), $tax_name),
-            'update_item'                => sprintf(__('Upgrade %s', 'wprs'), $tax_name),
-            'add_new_item'               => sprintf(__('Add New %s', 'wprs'), $tax_name),
-            'new_item_name'              => sprintf(__('New %s', 'wprs'), $tax_name),
-            'parent_item'                => sprintf(__('Parent %s', 'wprs'), $tax_name),
-            'parent_item_colon'          => sprintf(__('Parent %s', 'wprs'), $tax_name),
-            'search_items'               => sprintf(__('Search %s', 'wprs'), $plural),
-            'popular_items'              => sprintf(__('Popular %s', 'wprs'), $plural),
-            'separate_items_with_commas' => sprintf(__('Separate %s with commas', 'wprs'), $plural),
-            'add_or_remove_items'        => sprintf(__('Add or remove %s', 'wprs'), $plural),
-            'choose_from_most_used'      => sprintf(__('Choose from the most used %s', 'wprs'), $tax_name),
-            'not_found'                  => sprintf(__('No %s found.', 'wprs'), $tax_name),
+            'name'                       => ucwords($tax_name),
+            'singular_name'              => ucwords($singular_name),
+            'menu_name'                  => ucwords($tax_name),
+            'all_items'                  => sprintf(__('All %s', 'wprs'), $pltax_nameural),
+            'edit_item'                  => sprintf(__('Edit %s', 'wprs'), $singular_name),
+            'view_item'                  => sprintf(__('View %s', 'wprs'), $singular_name),
+            'update_item'                => sprintf(__('Upgrade %s', 'wprs'), $singular_name),
+            'add_new_item'               => sprintf(__('Add New %s', 'wprs'), $singular_name),
+            'new_item_name'              => sprintf(__('New %s', 'wprs'), $singular_name),
+            'parent_item'                => sprintf(__('Parent %s', 'wprs'), $singular_name),
+            'parent_item_colon'          => sprintf(__('Parent %s', 'wprs'), $singular_name),
+            'search_items'               => sprintf(__('Search %s', 'wprs'), $tax_name),
+            'popular_items'              => sprintf(__('Popular %s', 'wprs'), $tax_name),
+            'separate_items_with_commas' => sprintf(__('Separate %s with commas', 'wprs'), $tax_name),
+            'add_or_remove_items'        => sprintf(__('Add or remove %s', 'wprs'), $tax_name),
+            'choose_from_most_used'      => sprintf(__('Choose from the most used %s', 'wprs'), $singular_name),
+            'not_found'                  => sprintf(__('No %s found.', 'wprs'), $singular_name),
         ];
 
         $labels = apply_filters('wprs_tax_labels_' . $tax_slug, $labels);
