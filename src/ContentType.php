@@ -19,7 +19,7 @@ class ContentType
      *
      * @usage   wprs_types( "work", __("Works", 'wprs'), [ 'title', 'editor', 'comments', 'thumbnail', 'author' ], true, false, 'dashicons-art' );
      */
-    public static function register(string $slug, string $name, bool|array $support, bool $is_publish, bool $hierarchical = false, string $icon = 'dashicons-networking')
+    public static function register(string $slug, string $name, $support, bool $is_publish, bool $hierarchical = false, string $icon = 'dashicons-networking')
     {
         Helpers::loadTextDomain();
 
