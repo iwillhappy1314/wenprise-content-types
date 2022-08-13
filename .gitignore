@@ -17,4 +17,4 @@ Temporary Items
 .apdisk
 .publish/
 .idea/
-vendor/
+/vendor/
