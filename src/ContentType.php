@@ -27,7 +27,7 @@ class ContentType
         //文章类型的标签
         $labels = [
             'name'               => ucwords($name),
-            'singular_name'      => ucwords(singular_name),
+            'singular_name'      => ucwords($singular_name),
             'add_new'            => sprintf(__('Add New %s', 'wprs'), $singular_name),
             'add_new_item'       => sprintf(__('Add New %s', 'wprs'), $singular_name),
             'edit_item'          => sprintf(__('Edit %s', 'wprs'), $singular_name),
