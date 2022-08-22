@@ -30,7 +30,7 @@ class Taxonomy
             'name'                       => ucwords($tax_name),
             'singular_name'              => ucwords($singular_name),
             'menu_name'                  => ucwords($tax_name),
-            'all_items'                  => sprintf(__('All %s', 'wprs'), $pltax_nameural),
+            'all_items'                  => sprintf(__('All %s', 'wprs'), $tax_name),
             'edit_item'                  => sprintf(__('Edit %s', 'wprs'), $singular_name),
             'view_item'                  => sprintf(__('View %s', 'wprs'), $singular_name),
             'update_item'                => sprintf(__('Upgrade %s', 'wprs'), $singular_name),
