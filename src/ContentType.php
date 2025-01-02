@@ -9,7 +9,7 @@ class ContentType
      * 快速添加文章类型
      **
      *
-     * @param string        $slug         文章类型名称
+     * @param string|array  $slug         文章类型名称
      * @param string        $name         文章类型菜单名称
      * @param array|boolean $support      文章类型支持的功能
      * @param boolean       $is_publish   文章类型是否在前后台可见
@@ -18,11 +18,19 @@ class ContentType
      *
      * @usage   wprs_types( "work", __("Works", 'wprs'), [ 'title', 'editor', 'comments', 'thumbnail', 'author' ], true, false, 'dashicons-art' );
      */
-    public static function register(string $slug, string $name, $support, bool $is_publish, bool $hierarchical = false, string $icon = 'dashicons-networking')
+    public static function register(string|array $slug, string $name, $support, bool $is_publish, bool $hierarchical = false, string $icon = 'dashicons-networking')
     {
         Helpers::loadTextDomain();
 
         $singular_name = Vendor\Doctrine\Common\Inflector\Inflector::singularize($name);
+
+        if (is_array($slug)) {
+            $post_type_slug    = $slug[ 0 ];
+            $post_type_rewrite = $slug[ 1 ];
+        } else {
+            $post_type_slug    = $slug;
+            $post_type_rewrite = $slug;
+        }
 
         //文章类型的标签
         $labels = [
@@ -40,7 +48,7 @@ class ContentType
             'menu_name'          => ucfirst($name),
         ];
 
-        $labels = apply_filters('wprs_type_labels_' . $slug, $labels);
+        $labels = apply_filters('wprs_type_labels_' . $post_type_slug, $labels);
 
         //注册文章类型需要的参数
         $args = [
@@ -59,15 +67,15 @@ class ContentType
             'hierarchical'        => $hierarchical,
             'supports'            => $support,
             'has_archive'         => $is_publish,
-            'rewrite'             => ['slug' => $slug],
+            'rewrite'             => ['slug' => $post_type_rewrite],
             'query_var'           => $is_publish,
         ];
 
 
-        $args = apply_filters('wprs_type_args_' . $slug, $args);
+        $args = apply_filters('wprs_type_args_' . $post_type_slug, $args);
 
-        if (strlen($slug) > 0) {
-            register_post_type($slug, $args);
+        if (strlen($post_type_slug) > 0) {
+            register_post_type($post_type_slug, $args);
         }
     }
 
@@ -146,7 +154,3 @@ class ContentType
     }
 
 }
-
-
-
-
